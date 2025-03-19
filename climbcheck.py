@@ -54,6 +54,7 @@ while True:
     detections = results[0].boxes
 
     safe = True
+    danger_detected = False  # Track if "human_without_rope" is detected
     for i in range(len(detections)):
         xyxy = detections[i].xyxy.cpu().numpy().squeeze().astype(int)
         xmin, ymin, xmax, ymax = xyxy
@@ -69,9 +70,18 @@ while True:
             label_ymin = max(ymin, labelSize[1] + 10)
             cv2.rectangle(frame, (xmin, label_ymin - labelSize[1] - 10), (xmin + labelSize[0], label_ymin + baseLine - 10), color, cv2.FILLED)
             cv2.putText(frame, label, (xmin, label_ymin - 7), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0), 1)
-            safe = True
-        else:
-            safe = False
+            if classname == "human_without_rope":
+                danger_detected = True  # Set danger flag if detected
+
+    # Display "Danger" if a "human_without_rope" is detected
+    if danger_detected:
+        text = "Danger"
+        font_scale = 2
+        thickness = 3
+        text_size = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, font_scale, thickness)[0]
+        text_x = (frame.shape[1] - text_size[0]) // 2
+        text_y = frame.shape[0] - 50
+        cv2.putText(frame, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (0, 0, 255), thickness)
 
     cv2.imshow('YOLO detection results', frame)
     if cv2.waitKey(5) & 0xFF == ord('q'):

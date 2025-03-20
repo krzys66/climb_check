@@ -92,7 +92,7 @@ while True:
 
     # Wyświetlenie przetworzonej klatki
     cv2.imshow('YOLO detection results', frame)
-    if cv2.waitKey(5) & 0xFF == ord('q'):  # Wyjście po naciśnięciu 'q'
+    if cv2.waitKey(1) & 0xFF == ord('q'):  # Wyjście po naciśnięciu 'q'
         break
 
 # Zwolnienie zasobów

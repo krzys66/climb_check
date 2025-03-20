@@ -14,7 +14,7 @@ HOW TO RUN THE PROGRAM
 
 4. Run the script with the appropriate parameters:
 
-`` python your_script.py --model path_to_model.pt --source path_to_image.jpg --window_size 640x480
+`` python your_script.py --model path_to_model.pt --source path_to_video.jpg --window_size 640x480
 
 In this case:
 
@@ -22,7 +22,9 @@ In this case:
     climbcheck.py
 * path_to_model.pt should be:
     my_model.pt
-* path_to_image.jpg should be:
-    ../climbing_images/photo.jpg
+* path_to_video.jpg should be:
+    just place where you have your video (can be usb camera)
+
+You can add parameter --thresh, it able you to set detecting confidence (deafult thresh is 0.7)
 
 

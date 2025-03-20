@@ -2,7 +2,9 @@ HOW TO RUN THE PROGRAM
 
 1. Open Anaconda Prompt and type the following commands:
 
-``conda activate your_env (In this case, use yolo-env1)
+`` conda create -n "env_name"
+
+``conda activate your_env
 
 2. Navigate to the folder where your model file is located:
 

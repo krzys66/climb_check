@@ -23,7 +23,7 @@ In this case:
 * your_script.py can be:
     climbcheck.py
 * path_to_model.pt should be:
-    my_model.pt
+    my_model/my_model.pt
 * path_to_video.jpg should be:
     just place where you have your video (can be usb camera)
 
